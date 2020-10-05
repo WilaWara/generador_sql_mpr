@@ -1,4 +1,4 @@
-﻿namespace Adaptador_de_marcados_biometricos
+﻿namespace Generador_SQL
 {
     partial class Form1
     {

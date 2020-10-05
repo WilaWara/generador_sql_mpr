@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Adaptador_de_marcados_biometricos
+namespace Generador_SQL
 {
     static class Program
     {

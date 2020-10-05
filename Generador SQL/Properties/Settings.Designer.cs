@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Adaptador_de_marcados_biometricos.Properties
+namespace Generador_SQL.Properties
 {
 
 

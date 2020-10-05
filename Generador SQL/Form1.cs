@@ -9,7 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace Adaptador_de_marcados_biometricos
+namespace Generador_SQL
 {
     public partial class Form1 : Form
     {
