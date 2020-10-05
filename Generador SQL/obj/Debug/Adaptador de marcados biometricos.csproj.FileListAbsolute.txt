@@ -1,0 +1,8 @@
+C:\Users\alan mpr\source\repos\Adaptador de marcados biometricos\Adaptador de marcados biometricos\bin\Debug\Adaptador de marcados biometricos.exe
+C:\Users\alan mpr\source\repos\Adaptador de marcados biometricos\Adaptador de marcados biometricos\bin\Debug\Adaptador de marcados biometricos.pdb
+C:\Users\alan mpr\source\repos\Adaptador de marcados biometricos\Adaptador de marcados biometricos\obj\Debug\Adaptador de marcados biometricos.csprojAssemblyReference.cache
+C:\Users\alan mpr\source\repos\Adaptador de marcados biometricos\Adaptador de marcados biometricos\obj\Debug\Adaptador_de_marcados_biometricos.Form1.resources
+C:\Users\alan mpr\source\repos\Adaptador de marcados biometricos\Adaptador de marcados biometricos\obj\Debug\Adaptador_de_marcados_biometricos.Properties.Resources.resources
+C:\Users\alan mpr\source\repos\Adaptador de marcados biometricos\Adaptador de marcados biometricos\obj\Debug\Adaptador de marcados biometricos.csproj.GenerateResource.cache
+C:\Users\alan mpr\source\repos\Adaptador de marcados biometricos\Adaptador de marcados biometricos\obj\Debug\Adaptador de marcados biometricos.exe
+C:\Users\alan mpr\source\repos\Adaptador de marcados biometricos\Adaptador de marcados biometricos\obj\Debug\Adaptador de marcados biometricos.pdb
