@@ -76,79 +76,7 @@ namespace Generador_SQL
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            /*StreamReader objInput = new StreamReader("H:\\empleados.dat", System.Text.Encoding.Default);
-            string contents = objInput.ReadToEnd().Trim();
-            string[] lines = contents.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
-            Console.WriteLine(lines.Length);
-
-            string[] split = System.Text.RegularExpressions.Regex.Split(contents, "\\s+", RegexOptions.None);
-            string consulta = "";
-
-            for (int i = 0; i < split.Length; i += 7)
-            {
-                string[] arreglo_complemento;
-                string complemento = "";
-                string correo_electronico = "><";
-                string fecha_creacion = "2020-09-29 09:00:00";
-                int genero = 0;
-                int nro_documento = 0;
-                string primer_apellido = "";
-                string segundo_apellido = "";
-                string primer_nombre = "";
-                string segundo_nombre = "";
-
-                if (split[i].Contains("-") == true)
-                {
-                    arreglo_complemento = split[i].Split('-');
-                    complemento = arreglo_complemento[1];
-                }
-
-                if (split[i + 1] == "M")
-                {
-                    genero = 1;
-                }
-                else if (split[i + 1] == "F")
-                {
-                    genero = 2;
-                }
-                nro_documento = Int32.Parse(split[i + 2]);
-                primer_apellido = split[i + 3];
-                if (split[i + 4] != "1" && split[i + 4] != "2")
-                {
-                    segundo_apellido = split[i + 4];
-                }
-
-                if (split[i + 4] == "1" || split[i + 4] == "2")
-                {
-                    primer_nombre = split[i + 5];
-                    try
-                    {
-                        segundo_nombre = split[i + 6];
-                    }
-                    catch (Exception ex)
-                    {
-                        // Hacer nada
-                    }
-                }
-
-                if (split[i + 5] == "1" || split[i + 5] == "2")
-                {
-                    primer_nombre = split[i + 6];
-                    try
-                    {
-                        segundo_nombre = split[i + 7];
-                    }
-                    catch (Exception ex)
-                    {
-                        // Hacer nada
-                    }
-                }
-
-                consulta = "INSERT INTO directorio.persona(complemento, correoelectronico, estado_registro, fecha_creacion, genero, host_creacion, nrodocumento, primerapellido, primernombre, segundoapellido, segundonombre, usuario_creacion, id_directorio_telefonico) VALUES ('" + complemento + "', '" + correo_electronico + "', true, '" + fecha_creacion + "', " + genero + ", '127.0.0.1', " + nro_documento + ", '" + primer_apellido + "', '" + primer_nombre + "', '" + segundo_apellido + "', '" + segundo_nombre + "', 'aalvarez', 0);";
-                Console.WriteLine(consulta);
-
-                continue;
-            }*/
+            
 
         }
 
@@ -179,6 +107,173 @@ namespace Generador_SQL
                     if (temp1 == temp2)
                     {                        
                         consulta = "INSERT INTO directorio.empleado_organigrama_detalle (idpersona, idorganigramadetalle) VALUES (" + valores_lineas_doc2[0] + ", " + valores_lineas_doc1[0] + ");";
+                        Console.WriteLine(consulta);
+                    }
+                }
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            StreamReader objInput = new StreamReader("D:\\empleados.dat", System.Text.Encoding.Default);
+            string contents = objInput.ReadToEnd().Trim();
+            string[] lines = contents.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+            Console.WriteLine(lines.Length);
+
+            /************************************************************/
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string[] split = Regex.Split(lines[i], "\\s+", RegexOptions.None);
+                string consulta = "";
+
+                string[] arreglo_complemento;
+                string complemento = "";
+                string correo_electronico = "><";
+                //string fecha_creacion = "2020-09-29 09:00:00";
+                int genero = 0;
+                int nro_documento = 0;
+                string primer_apellido = "";
+                string segundo_apellido = "";
+                string primer_nombre = "";
+                string segundo_nombre = "";
+
+                if (split[0].Contains("-") == true)
+                {
+                    arreglo_complemento = split[0].Split('-');
+                    complemento = arreglo_complemento[1];
+                }
+
+                if (split[0 + 1] == "M")
+                {
+                    genero = 1;
+                }
+                else if (split[0 + 1] == "F")
+                {
+                    genero = 2;
+                }
+
+                nro_documento = int.Parse(split[0 + 2]);
+                primer_apellido = split[0 + 3];
+                if (split[0 + 4] != "1" && split[0 + 4] != "2")
+                {
+                    segundo_apellido = split[0 + 4];
+                }
+
+                if (split[0 + 4] == "1" || split[0 + 4] == "2")
+                {
+                    primer_nombre = split[0 + 5];
+                    try
+                    {
+                        segundo_nombre = split[0 + 6];
+                    }
+                    catch (Exception ex)
+                    {
+                        // Hacer nada
+                    }
+                }
+
+                if (split[0 + 5] == "1" || split[0 + 5] == "2")
+                {
+                    primer_nombre = split[0 + 6];
+                    try
+                    {
+                        segundo_nombre = split[0 + 7];
+                    }
+                    catch (Exception ex)
+                    {
+                        // Hacer nada
+                    }
+                }
+
+                consulta = "INSERT INTO nucleo.persona(complemento, correo_electronico, genero, nombres, nro_documento, primer_apellido, segundo_apellido) VALUES ('" + complemento + "', '" + correo_electronico + "', " + genero + ", '" + primer_nombre + " " + segundo_nombre + "', " + nro_documento + ", '" + primer_apellido + "', '" + segundo_apellido + "');";
+                if (consulta.Contains("INSERT INTO") == true)
+                {
+                    Console.WriteLine(consulta);
+                    continue;
+                }
+            }
+        }
+
+        private void Empleados_Click(object sender, EventArgs e)
+        {
+            StreamReader input_doc1 = new StreamReader("D:\\nrodocumento_fechanac.dat", System.Text.Encoding.Default);
+            string contenido_doc1 = input_doc1.ReadToEnd().Trim();
+            string[] lineas_doc1 = contenido_doc1.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+
+            StreamReader input_doc2 = new StreamReader("D:\\idpersona_nrodocumento.dat", System.Text.Encoding.Default);
+            string contenido_doc2 = input_doc2.ReadToEnd().Trim();
+            string[] lineas_doc2 = contenido_doc2.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+
+            string temp1, temp2;
+            string consulta = "";
+
+            for (int i = 0; i < lineas_doc1.Length; i++)
+            {
+                /*string[] valores_lineas_doc1 = lineas_doc1[i].Split(new string[] { " t " }, StringSplitOptions.None);
+                temp1 = valores_lineas_doc1[1].ToLower();*/
+
+                string[] valores_lineas_doc1 = Regex.Split(lineas_doc1[i], "\\s+", RegexOptions.None);
+                temp1 = valores_lineas_doc1[0].ToLower();
+                
+                for (int u = 0; u < lineas_doc2.Length; u++)
+                {
+                    /*string[] valores_lineas_doc2 = lineas_doc2[u].Split(new string[] { " t " }, StringSplitOptions.None);
+                    temp2 = valores_lineas_doc2[1].ToLower();*/
+
+                    string[] valores_lineas_doc2 = Regex.Split(lineas_doc2[u], "\\s+", RegexOptions.None);
+                    temp2 = valores_lineas_doc2[1].ToLower();
+
+
+
+                    if (temp1 == temp2)
+                    {
+                        consulta = "INSERT INTO rrhh.empleado (celular, direccion, fecha_nacimiento, telefono, idpersona) VALUES (0, '', '" + valores_lineas_doc1[1] + "', 0, " + valores_lineas_doc2[0] + ");";
+                        Console.WriteLine(consulta);
+                    }
+                }
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            StreamReader input_doc1 = new StreamReader("D:\\biometrica_empleado_antiguo.dat", System.Text.Encoding.Default);
+            string contenido_doc1 = input_doc1.ReadToEnd().Trim();
+            string[] lineas_doc1 = contenido_doc1.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+
+            StreamReader input_doc2 = new StreamReader("D:\\idpersona_nrodocumento.dat", System.Text.Encoding.Default);
+            string contenido_doc2 = input_doc2.ReadToEnd().Trim();
+            string[] lineas_doc2 = contenido_doc2.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+
+            int temp1, temp2;
+            string consulta = "";
+
+            for (int i = 0; i < lineas_doc1.Length; i++)
+            {
+                /*string[] valores_lineas_doc1 = lineas_doc1[i].Split(new string[] { " t " }, StringSplitOptions.None);
+                temp1 = valores_lineas_doc1[1].ToLower();*/
+
+                /*string[] valores_lineas_doc1 = Regex.Split(lineas_doc1[i], "\\s+", RegexOptions.None);
+                temp1 = valores_lineas_doc1[0].ToLower();*/
+
+                string[] auxiliar1 = Regex.Split(lineas_doc1[i], "'aalvarez',", RegexOptions.None);
+                string auxiliar2 = auxiliar1[1].Replace(");", "");
+
+                string[] valores_lineas_doc1 = Regex.Split(auxiliar2, ",", RegexOptions.None);
+                temp1 = int.Parse(valores_lineas_doc1[1]);
+
+                //5, 2384130);
+
+                for (int u = 0; u < lineas_doc2.Length; u++)
+                {
+                    /*string[] valores_lineas_doc2 = lineas_doc2[u].Split(new string[] { " t " }, StringSplitOptions.None);
+                    temp2 = valores_lineas_doc2[1].ToLower();*/
+
+                    string[] valores_lineas_doc2 = Regex.Split(lineas_doc2[u], "\\s+", RegexOptions.None);
+                    temp2 = int.Parse(valores_lineas_doc2[1]);
+                    
+                    if (temp1 == temp2)
+                    {
+                        consulta = auxiliar1[0] + "'aalvarez', " + valores_lineas_doc2[0] + ", " + temp2.ToString() + ");";
                         Console.WriteLine(consulta);
                     }
                 }
