@@ -20,21 +20,34 @@ namespace Generador_SQL
 
         private void button1_Click(object sender, EventArgs e)
         {
-            StreamReader objInput = new StreamReader("H:\\2425-09.dat", System.Text.Encoding.Default);
-            string contents = objInput.ReadToEnd().Trim();
-
-            string[] split = System.Text.RegularExpressions.Regex.Split(contents, "\\s+", RegexOptions.None);
-            string consulta = "";
-
-            for (int i = 0; i<split.Length; i+=7)
+            OpenFileDialog cuadro_busqueda = new OpenFileDialog();
+            cuadro_busqueda.InitialDirectory = @"Documentos";
+            cuadro_busqueda.Title = "Buscar facturas...";
+            cuadro_busqueda.Filter = "DAT (*.dat)|*.dat";
+            
+            if (cuadro_busqueda.ShowDialog() == DialogResult.OK)
             {
-                string fecha_hora = split[i + 1] + " " + split[i + 2];
-                TimeSpan t = Convert.ToDateTime(fecha_hora) - new DateTime(1970, 1, 1);
-                int secondsSinceEpoch = (int)t.TotalSeconds;
+                StreamReader objInput = new StreamReader(cuadro_busqueda.FileName, System.Text.Encoding.Default);
+                string contents = objInput.ReadToEnd().Trim();
 
-                consulta = "INSERT INTO dbo.BS (UserID, eventTime, eventCode, tnaEvent, Code, IP) VALUES (" + split[i] + ", " + secondsSinceEpoch  + ", 55, 0, '" + split[i] + "', 'Imp. manual')";
-                Console.WriteLine(consulta);
+                string[] split = System.Text.RegularExpressions.Regex.Split(contents, "\\s+", RegexOptions.None);
+                string consulta = "";
+
+
+                textBox1.Text = "---------------------Marcados: " + cuadro_busqueda.FileName + "---------------------";
+                //Console.WriteLine("-------------------------Marcados: " + cuadro_busqueda.FileName + "-------------------------");
+                for (int i = 0; i < split.Length; i += 7)
+                {
+                    string fecha_hora = split[i + 1] + " " + split[i + 2];
+                    TimeSpan t = Convert.ToDateTime(fecha_hora) - new DateTime(1970, 1, 1);
+                    int secondsSinceEpoch = (int)t.TotalSeconds;
+
+                    consulta = "INSERT INTO dbo.BS (UserID, eventTime, eventCode, tnaEvent, Code, IP) VALUES (" + split[i] + ", " + secondsSinceEpoch + ", 55, 0, '" + split[i] + "', 'Imp. manual')";
+                    //Console.WriteLine(consulta);
+                    textBox1.Text += consulta + "\r\n";
+                }
             }
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -278,6 +291,51 @@ namespace Generador_SQL
                     }
                 }
             }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog cuadro_busqueda = new OpenFileDialog();
+            cuadro_busqueda.InitialDirectory = @"Documentos";
+            cuadro_busqueda.Title = "Buscar archivo...";
+            cuadro_busqueda.Filter = "DAT (*.dat)|*.dat";
+
+            if (cuadro_busqueda.ShowDialog() == DialogResult.OK)
+            {
+                StreamReader objInput = new StreamReader(cuadro_busqueda.FileName, System.Text.Encoding.Default);
+                string contents = objInput.ReadToEnd().Trim();
+
+                string[] split = System.Text.RegularExpressions.Regex.Split(contents, "\\s+", RegexOptions.None);
+                string consulta = "";
+
+                Console.WriteLine("-------------------------Marcados: " + cuadro_busqueda.FileName + "-------------------------");
+                for (int i = 0; i < split.Length; i += 10)
+                {
+                    string fecha_hora = split[i + 8] + " " + split[i + 9];
+                    TimeSpan t = Convert.ToDateTime(fecha_hora) - new DateTime(1970, 1, 1);
+                    int secondsSinceEpoch = (int)t.TotalSeconds;
+
+                    consulta = "INSERT INTO dbo.BS (UserID, eventTime, eventCode, tnaEvent, Code, IP) VALUES (" + split[i + 3] + ", " + secondsSinceEpoch + ", 55, 0, '" + split[i + 3] + "', 'R Illimani')";
+                    Console.WriteLine(consulta);
+                }
+            }
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Clipboard.Clear();
+                Clipboard.SetText(textBox1.Text);
+
+                MessageBox.Show("Copiado al portapapeles");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
         }
     }
 }

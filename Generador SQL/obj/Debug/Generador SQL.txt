@@ -1,8 +1,0 @@
-C:\Users\alan mpr\source\repos\Generador SQL\Generador SQL\bin\Debug\Generador SQL.exe
-C:\Users\alan mpr\source\repos\Generador SQL\Generador SQL\bin\Debug\Generador SQL.pdb
-C:\Users\alan mpr\source\repos\Generador SQL\Generador SQL\obj\Debug\Generador SQL.csprojAssemblyReference.cache
-C:\Users\alan mpr\source\repos\Generador SQL\Generador SQL\obj\Debug\Generador_SQL.Form1.resources
-C:\Users\alan mpr\source\repos\Generador SQL\Generador SQL\obj\Debug\Generador_SQL.Properties.Resources.resources
-C:\Users\alan mpr\source\repos\Generador SQL\Generador SQL\obj\Debug\Generador SQL.csproj.GenerateResource.cache
-C:\Users\alan mpr\source\repos\Generador SQL\Generador SQL\obj\Debug\Generador SQL.exe
-C:\Users\alan mpr\source\repos\Generador SQL\Generador SQL\obj\Debug\Generador SQL.pdb
